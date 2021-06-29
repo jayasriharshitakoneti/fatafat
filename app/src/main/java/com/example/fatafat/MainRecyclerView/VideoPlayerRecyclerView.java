@@ -72,7 +72,7 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
     // ui
 
-    private ImageView thumbnail,volumeControl;
+    private ImageView thumbnail,volumeControl,sound_disc;
     private ProgressBar progressBar;
     private View viewHolderParent;
     private FrameLayout frameLayout;
@@ -325,11 +325,14 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 //        shareBtn = holder.shareBtn;
 //        likeBtn = holder.likeBtn;
         thumbnail = holder.thumbnail;
+        sound_disc = holder.sound_disc;
         progressBar = holder.progressBar;
         volumeControl = holder.volumeControl;
         viewHolderParent = holder.itemView;
         requestManager = holder.requestManager;
         frameLayout = holder.itemView.findViewById(R.id.media_container);
+
+        Glide.with(context).load(R.drawable.disc).into(sound_disc);
 
 
 

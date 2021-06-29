@@ -8,7 +8,7 @@ import java.util.List;
 public class Users {
 
 
-    @SerializedName("showAllVideos")
+    @SerializedName("ALL_POSTS")
     private List<MediaObject> AllPosts;
 
     public List<MediaObject> getAllPosts() {

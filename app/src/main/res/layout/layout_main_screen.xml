@@ -33,16 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/volume_green"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:alpha="0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_volume_up_grey_24dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -192,13 +183,24 @@
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="8dp"
-        android:progressBackgroundTint="@color/white"
+        android:layout_height="1.2dp"
+        android:layout_marginTop="24dp"
         android:indeterminate="true"
+        android:visibility="visible"
         android:progressTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_disc" />
+
+    <ImageView
+        android:id="@+id/volume_green"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_volume_up_grey_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

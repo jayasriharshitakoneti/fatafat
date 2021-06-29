@@ -19,7 +19,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 
     FrameLayout media_container;
     TextView title;//,name,no_likes,no_comments
-    ImageView thumbnail, volumeControl;
+    ImageView thumbnail, volumeControl, sound_disc;
     ProgressBar progressBar;
     View parent;
     RequestManager requestManager;
@@ -36,6 +36,7 @@ public class VideoPlayerViewHolder extends RecyclerView.ViewHolder {
 //        name = itemView.findViewById(R.id.textView8);
         progressBar = itemView.findViewById(R.id.progressBar);
         volumeControl = itemView.findViewById(R.id.volume_green);
+        sound_disc = itemView.findViewById(R.id.image_disc);
 //        shareBtn = itemView.findViewById(R.id.imageVie9);
 //        likeBtn = itemView.findViewById(R.id.imageView6);
 //        commentBtn = itemView.findViewById(R.id.imageView7);

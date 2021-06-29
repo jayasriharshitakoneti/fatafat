@@ -6,7 +6,7 @@ import retrofit2.http.GET;
 public interface ApiInterface {
 
     //getting all the posts
-    @GET("index.php?p=showAllVideos")
+    @GET("posts.php")
     Call<Users> performAllPosts();
 
 }

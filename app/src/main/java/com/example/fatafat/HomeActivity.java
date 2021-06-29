@@ -13,30 +13,38 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.fatafat.MainRecyclerView.VerticalSpacingItemDecorator;
+import com.example.fatafat.MainRecyclerView.VideoPlayerRecyclerAdapter;
 import com.example.fatafat.MainRecyclerView.VideoPlayerRecyclerView;
 import com.example.fatafat.Models.MediaObject;
+import com.example.fatafat.Responses.ApiClient;
+import com.example.fatafat.Responses.ApiInterface;
+import com.example.fatafat.Responses.Users;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private List<MediaObject> mediaObjectList= new ArrayList<>();
+    private ArrayList<MediaObject> mediaObjectList= new ArrayList<>();
     private VideoPlayerRecyclerView recyclerview;
+    private static ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        apiInterface= ApiClient.getApiClient().create(ApiInterface.class);
         init();
     }
 
@@ -72,9 +80,46 @@ public class HomeActivity extends AppCompatActivity {
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(recyclerview);
 
+        LoadAllPosts();
 
 
     }
+
+    private void LoadAllPosts() {
+
+        Call<Users> call = apiInterface.performAllPosts();
+
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+
+                if(response.isSuccessful())
+                {
+
+                    mediaObjectList = (ArrayList<MediaObject>) response.body().getAllPosts();
+
+                    recyclerview.setMediaObjects(mediaObjectList);
+                    VideoPlayerRecyclerAdapter adapter = new VideoPlayerRecyclerAdapter(mediaObjectList, initGlide());
+                    recyclerview.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    recyclerview.setKeepScreenOn(true);
+                    recyclerview.smoothScrollToPosition(mediaObjectList.size()+1);
+                }
+                else
+                {
+
+                    Toast.makeText(HomeActivity.this, "Network Error.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Network Error.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 
     public static void setWindowFlag (@NotNull Activity activity, final int bits, boolean on){
         Window win = activity.getWindow();
