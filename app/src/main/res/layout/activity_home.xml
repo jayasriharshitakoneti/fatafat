@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:keepScreenOn="true"
+    tools:context=".HomeActivity">
+
+<!--    <include layout="@layout/layout_main_screen"-->
+<!--        app:layout_editor_absoluteX="87dp"-->
+<!--        app:layout_editor_absoluteY="-27dp"/>-->
+
+
+    <com.example.fatafat.MainRecyclerView.VideoPlayerRecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/record"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_song"
+        app:srcCompat="@drawable/add_video" />
+
+    <ImageView
+        android:id="@+id/dm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/me"
+        app:layout_constraintEnd_toStartOf="@+id/me"
+        app:layout_constraintStart_toEndOf="@+id/record"
+        app:layout_constraintTop_toTopOf="@+id/me"
+        app:srcCompat="@drawable/dm" />
+
+    <ImageView
+        android:id="@+id/image_home"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/record"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/record"
+        app:srcCompat="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/image_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/image_home"
+        app:layout_constraintEnd_toStartOf="@+id/record"
+        app:layout_constraintStart_toEndOf="@+id/image_home"
+        app:layout_constraintTop_toTopOf="@+id/image_home"
+        app:srcCompat="@drawable/search" />
+
+    <ImageView
+        android:id="@+id/me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/record"
+        app:srcCompat="@drawable/me" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
